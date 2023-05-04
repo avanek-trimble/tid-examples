@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 import { TIDAuthComponent } from './tidauth/tidauth.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 @NgModule({
     imports: [AuthModule.forRoot({
@@ -22,9 +23,10 @@ import { TIDAuthComponent } from './tidauth/tidauth.component';
       CommonModule,
       MatButtonModule
     ],
-    exports: [ TIDAuthComponent, AuthModule],
+    exports: [ TIDAuthComponent, UnauthorizedComponent, AuthModule],
     declarations: [
-      TIDAuthComponent
+      TIDAuthComponent,
+      UnauthorizedComponent
     ],
 })
 export class AuthConfigModule {}
