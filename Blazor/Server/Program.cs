@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+// create CORS policy to allow any origin/method/header (* * *)
+builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +31,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// enable CORS policy defined by builder
+app.UseCors();
 
 app.MapRazorPages();
 app.MapControllers();
