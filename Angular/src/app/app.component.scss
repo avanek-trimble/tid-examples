@@ -1,0 +1,15 @@
+.sitenav {
+    button {
+        margin-right: 0.5rem;
+    }
+}
+
+.content {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+}
+
+.active-link {
+    background: rgba(0,0,0,.2);
+}
