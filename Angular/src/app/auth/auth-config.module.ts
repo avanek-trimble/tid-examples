@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AuthModule } from 'angular-auth-oidc-client';
+import { TIDAuthComponent } from './tidauth/tidauth.component';
 
 
 @NgModule({
@@ -16,6 +17,9 @@ import { AuthModule } from 'angular-auth-oidc-client';
               renewTimeBeforeTokenExpiresInSeconds: 30,
           }
       })],
-    exports: [AuthModule],
+    exports: [ TIDAuthComponent, AuthModule],
+    declarations: [
+      TIDAuthComponent
+    ],
 })
 export class AuthConfigModule {}
