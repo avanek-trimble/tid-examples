@@ -1,1 +1,10 @@
-<p>tidauth works!</p>
+<ng-container *ngIf="(authCheck$ | async); let authCheck">
+    <div [hidden]="authCheck.isAuthenticated">
+        <button mat-button (click)="signin()">Sign in with TID</button>
+    </div>
+    <div [hidden]="!authCheck.isAuthenticated">
+        <span class="userinfo">Hello {{authCheck.userData.email}}</span>
+        <button mat-button (click)="signout()">Sign out</button>
+    </div>
+</ng-container>
+
