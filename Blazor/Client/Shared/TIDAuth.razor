@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+
+<AuthorizeView>
+    <Authorized>
+        <p>Signed in with Trimble Identity</p>
+        <p>TID email: @context.User.Claims.FirstOrDefault(c => c.Type == "email")?.Value</p>
+    </Authorized>
+    <NotAuthorized>
+        <a href="authentication/login">Sign in with Trimble Identity</a>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+}
