@@ -1,5 +1,10 @@
 ﻿@page "/fetchdata"
+
 @using Blazor.Shared
+@using Microsoft.AspNetCore.Authorization;
+
+@attribute [Authorize]
+
 @inject HttpClient Http
 
 <PageTitle>Weather forecast</PageTitle>
