@@ -6,13 +6,13 @@ namespace Blazor.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    [Authorize(Policy = "TIDTrimbleEmail")] // Require a "@trimble.com" email address for the TID access token
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
 
         private readonly ILogger<WeatherForecastController> _logger;
 

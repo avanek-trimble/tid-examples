@@ -1,4 +1,6 @@
+using Blazor.Server.CustomAuthorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +31,20 @@ builder.Services
             ValidateLifetime = true
         };
     });
+
+// Bootstrap to create the custom policy for checking email address associated to TID access token
+builder.Services.AddMemoryCache();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IAuthorizationHandler, EmailDomainClaimHandler>().AddHttpClient();
+
+// Add custom policy for possible authorization checks
+builder.Services.AddAuthorization(o =>
+{
+    o.AddPolicy("TIDTrimbleEmail", p =>
+    {
+        p.Requirements.Add(new EmailDomainRequirement("trimble.com"));
+    });
+});
 
 
 var app = builder.Build();
