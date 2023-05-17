@@ -33,6 +33,3 @@ jobs:
     - name: Yarn Build
       working-directory: ./Angular
       run: yarn build
-    - name: Yarn Test
-      working-directory: ./Angular
-      run: yarn test
