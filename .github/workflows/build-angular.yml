@@ -24,6 +24,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
+        directory: ./Angular
         node-version: ${{ matrix.node-version }}
         cache: yarn
     - name: Yarn Build
