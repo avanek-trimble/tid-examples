@@ -27,7 +27,9 @@ jobs:
         cache-dependency-path: ./Angular/yarn.lock
         node-version: ${{ matrix.node-version }}
         cache: yarn
-    - run: yarn
+    - name: Yarn Install
+      run: yarn
+      working-directory: ./Angular
     - name: Yarn Build
       working-directory: ./Angular
       run: yarn build
